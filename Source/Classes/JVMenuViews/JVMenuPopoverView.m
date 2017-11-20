@@ -186,7 +186,7 @@ static CGFloat const kTransformToValue = 0.6;
 
 - (CGRect)closeBtnFrame
 {
-    return CGRectMake(15, (DEVICE_ISIPHONEX ? 44: 20) + 8, self.menuItems.menuCloseButtonImage.size.width, self.menuItems.menuCloseButtonImage.size.height);
+    return CGRectMake(15, (DEVICE_ISIPHONEX ? 48: 28), self.menuItems.menuCloseButtonImage.size.width, self.menuItems.menuCloseButtonImage.size.height);
 }
 
 
