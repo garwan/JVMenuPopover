@@ -13,7 +13,7 @@
 #import "UIScreen+JVMenuCategory.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define DEVICE_ISIPHONEX ([[[UIScreen mainScreen] nativeBounds] height] == 2436)
+#define DEVICE_ISIPHONEX ([[UIScreen mainScreen] nativeBounds].size.height == 2436.0)
 
 #pragma mark - Interface
 
