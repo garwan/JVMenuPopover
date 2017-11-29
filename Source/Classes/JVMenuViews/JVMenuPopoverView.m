@@ -568,7 +568,7 @@ static CGFloat const kTransformToValue = 0.6;
 
 - (void)reloadContent
 {
-    [self.tableView reloadData]
+    [self.tableView reloadData];
 }
 
 - (void)closeMenu
