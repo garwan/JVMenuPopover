@@ -566,6 +566,10 @@ static CGFloat const kTransformToValue = 0.6;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 
+- (void)reloadContent
+{
+    [self.tableView reloadData]
+}
 
 - (void)closeMenu
 {

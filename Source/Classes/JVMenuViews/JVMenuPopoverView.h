@@ -118,6 +118,8 @@
  */
 - (void)showMenuWithController:(UIViewController *)viewController;
 
+/** Reload content @a JVMenuPopover. */
+- (void)reloadContent;
 
 /** Closes @a JVMenuPopover. */
 - (void)closeMenu;
