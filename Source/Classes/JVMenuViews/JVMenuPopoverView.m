@@ -13,7 +13,7 @@
 #import "UIScreen+JVMenuCategory.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define DEVICE_ISIPHONEX ([[UIScreen mainScreen] nativeBounds].size.height == 2436.0)
+#define SAFE_AREA_INSETS ([[UIApplication.sharedApplication keyWindow] safeAreaInsets])
 
 #pragma mark - Interface
 
@@ -148,6 +148,7 @@ static CGFloat const kTransformToValue = 0.6;
         _tableView = [[UITableView alloc] initWithFrame:self.tableViewFrame style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.bounces = NO;
         
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
         {
@@ -165,7 +166,11 @@ static CGFloat const kTransformToValue = 0.6;
 
 - (CGRect)tableViewFrame
 {
-    return CGRectMake(0, 70, self.frame.size.width, self.frame.size.height);
+    UIEdgeInsets insets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        insets = SAFE_AREA_INSETS;
+    }
+    return CGRectMake(0, insets.top + 50, self.frame.size.width, self.frame.size.height);
 }
 
 
@@ -186,7 +191,11 @@ static CGFloat const kTransformToValue = 0.6;
 
 - (CGRect)closeBtnFrame
 {
-    return CGRectMake(15, (DEVICE_ISIPHONEX ? 48: 28), self.menuItems.menuCloseButtonImage.size.width, self.menuItems.menuCloseButtonImage.size.height);
+    UIEdgeInsets insets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        insets = SAFE_AREA_INSETS;
+    }
+    return CGRectMake(15, insets.top + 12, self.menuItems.menuCloseButtonImage.size.width, self.menuItems.menuCloseButtonImage.size.height);
 }
 
 
